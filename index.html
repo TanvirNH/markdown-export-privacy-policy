@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Export - Privacy Policy</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --primary-light: #818CF8;
+            --background: #0F172A;
+            --surface: #1E293B;
+            --text-main: #F1F5F9;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+            --border: rgba(71, 85, 105, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #0D1117 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Container */
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            width: 100%;
+        }
+
+        .header-section {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .policy-section {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .policy-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .policy-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .policy-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .policy-section ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .policy-section li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* Highlights */
+        .highlight {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .highlight p {
+            margin: 0;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(79, 70, 229, 0.05) 100%);
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-section h2 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .btn-email {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-email:hover {
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            background: rgba(30, 41, 59, 0.3);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .policy-section {
+                padding: 24px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .policy-section {
+                padding: 16px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Markdown Export</a>
+            <ul class="nav-links">
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Header Section -->
+        <section class="header-section">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last updated: January 2026</p>
+        </section>
+
+        <!-- Introduction -->
+        <section class="policy-section">
+            <h2>Overview</h2>
+            <p>At Markdown Export, we take your privacy seriously. This Privacy Policy explains how our macOS application handles your data and personal information.</p>
+            <div class="highlight">
+                <p>✓ Markdown Export is a local-first application for macOS. Your documents and data stay on your device.</p>
+            </div>
+        </section>
+
+        <!-- Data Collection -->
+        <section class="policy-section">
+            <h2>What Data We Collect</h2>
+            <h3>Information You Create</h3>
+            <p>Markdown Export processes markdown documents that you create or open within the application. This content:</p>
+            <ul>
+                <li>Remains stored locally on your macOS device</li>
+                <li>Is not transmitted to our servers</li>
+                <li>Is not collected, tracked, or stored by us</li>
+                <li>Is used only to generate exports (PDF, Word, PNG)</li>
+            </ul>
+
+            <h3>No Collection of Personal Information</h3>
+            <p>We do not collect:</p>
+            <ul>
+                <li>Your name, email, or contact information (unless you contact support)</li>
+                <li>Usage analytics or telemetry data</li>
+                <li>Device identifiers or system information</li>
+                <li>Location data or browsing history</li>
+                <li>IP addresses or network information</li>
+            </ul>
+        </section>
+
+        <!-- Export Processing -->
+        <section class="policy-section">
+            <h2>Export Processing</h2>
+            <p>When you export your markdown document:</p>
+            <ul>
+                <li><strong>PDF Exports:</strong> Converted locally on your device using html2pdf.js library</li>
+                <li><strong>Word Documents:</strong> Generated locally with HTML markup, saved to your Mac</li>
+                <li><strong>PNG Images:</strong> Rendered locally using html2canvas library</li>
+            </ul>
+            <p>All export files are generated on your device and saved to a location you choose. We have no access to these files.</p>
+        </section>
+
+        <!-- External Libraries -->
+        <section class="policy-section">
+            <h2>Third-Party Libraries</h2>
+            <p>Markdown Export uses the following open-source libraries, loaded from CDN:</p>
+            <ul>
+                <li><strong>html2pdf.js</strong> - PDF generation (local processing)</li>
+                <li><strong>html2canvas</strong> - Image rendering (local processing)</li>
+                <li><strong>marked.js</strong> - Markdown parsing (local processing)</li>
+                <li><strong>highlight.js</strong> - Code syntax highlighting (local processing)</li>
+            </ul>
+            <p>These libraries process your data locally on your macOS device. No data is sent to external servers.</p>
+        </section>
+
+        <!-- Security -->
+        <section class="policy-section">
+            <h2>Security & Data Protection</h2>
+            <p>Your documents are protected by:</p>
+            <ul>
+                <li>Local processing - all operations happen on your device</li>
+                <li>No network transmission of document content</li>
+                <li>Your macOS built-in file system security</li>
+                <li>Your control over where files are saved</li>
+            </ul>
+        </section>
+
+        <!-- Contact & Support -->
+        <section class="policy-section">
+            <h2>Support Inquiries</h2>
+            <p>If you contact us for support, we may collect:</p>
+            <ul>
+                <li>Your email address (provided by you)</li>
+                <li>Details about your issue or question</li>
+                <li>Information needed to help resolve your issue</li>
+            </ul>
+            <p>This information is used solely to assist you and is not shared with third parties.</p>
+        </section>
+
+        <!-- Changes to Policy -->
+        <section class="policy-section">
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy as needed. When we make material changes, we will update the "Last updated" date above. Continued use of Markdown Export after changes indicates your acceptance of the updated policy.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2>Questions?</h2>
+            <p>If you have any questions about this Privacy Policy or how Markdown Export handles your data, please don't hesitate to reach out.</p>
+            <a href="mailto:tanvir4talk@gmail.com" class="btn-email">📧 Contact Us</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:tanvir4talk@gmail.com">Email Support</a>
+                <span>•</span>
+                <a href="#privacy">Privacy Policy</a>
+                <span>•</span>
+                <a href="https://github.com">GitHub</a>
+            </div>
+            <p>&copy; 2026 Markdown Export. All rights reserved.</p>
+            <p style="font-size: 12px; margin-top: 8px;">macOS Application • Privacy-Focused • No Data Collection</p>
+        </div>
+    </footer>
+</body>
+</html>
