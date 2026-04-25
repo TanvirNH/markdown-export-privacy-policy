@@ -304,7 +304,7 @@
         <!-- Header Section -->
         <section class="header-section">
             <h1>Privacy Policy</h1>
-            <p class="last-updated">Last updated: January 2026</p>
+            <p class="last-updated">Last updated: April 2026</p>
         </section>
 
         <!-- Introduction -->
@@ -328,15 +328,16 @@
                 <li>Is used only to generate exports (PDF, Word, PNG)</li>
             </ul>
 
-            <h3>No Collection of Personal Information</h3>
-            <p>We do not collect:</p>
+            <h3>What We Do Not Collect</h3>
+            <p>We, the developer of Markdown Export, do not collect, track, or store:</p>
             <ul>
                 <li>Your name, email, or contact information (unless you contact support)</li>
-                <li>Usage analytics or telemetry data</li>
-                <li>Device identifiers or system information</li>
+                <li>Usage analytics or telemetry</li>
+                <li>Device identifiers</li>
                 <li>Location data or browsing history</li>
-                <li>IP addresses or network information</li>
+                <li>The contents of any document you create, open, or export</li>
             </ul>
+            <p style="margin-top: 16px;">Note: while the app itself collects nothing, certain network activity is unavoidable. See "Third-Party Services" below for details.</p>
         </section>
 
         <!-- Export Processing -->
@@ -353,15 +354,32 @@
 
         <!-- External Libraries -->
         <section class="policy-section">
-            <h2>Third-Party Libraries</h2>
-            <p>Markdown Export uses the following open-source libraries, loaded from CDN:</p>
+            <h2>Third-Party Services</h2>
+            <h3>Open-Source Libraries</h3>
+            <p>Markdown Export uses the following open-source JavaScript libraries to render the editor and produce exports. These libraries execute entirely on your Mac — your document content is never uploaded:</p>
             <ul>
-                <li><strong>html2pdf.js</strong> - PDF generation (local processing)</li>
-                <li><strong>html2canvas</strong> - Image rendering (local processing)</li>
-                <li><strong>marked.js</strong> - Markdown parsing (local processing)</li>
-                <li><strong>highlight.js</strong> - Code syntax highlighting (local processing)</li>
+                <li><strong>html2pdf.js</strong> — PDF generation</li>
+                <li><strong>html2canvas</strong> — Image rendering</li>
+                <li><strong>marked.js</strong> — Markdown parsing</li>
+                <li><strong>highlight.js</strong> — Code syntax highlighting</li>
             </ul>
-            <p>These libraries process your data locally on your macOS device. No data is sent to external servers.</p>
+
+            <h3>Content Delivery Networks (CDNs)</h3>
+            <p>The libraries above are downloaded by your Mac from public content delivery networks the first time the app is opened (and refreshed periodically). The CDNs we depend on are:</p>
+            <ul>
+                <li><strong>Cloudflare CDN</strong> (<code>cdnjs.cloudflare.com</code>)</li>
+                <li><strong>jsDelivr CDN</strong> (<code>cdn.jsdelivr.net</code>)</li>
+            </ul>
+            <p>When your Mac requests these files, the operators of those networks (Cloudflare, Inc. and the jsDelivr project) automatically receive standard HTTP request metadata, which includes your IP address and the User-Agent string. This is true of any HTTPS request to any web server. We do not control or have access to these logs. Their privacy policies are independent of ours and govern how that metadata is handled:</p>
+            <ul>
+                <li><a href="https://www.cloudflare.com/privacypolicy/" style="color: var(--primary);">Cloudflare Privacy Policy</a></li>
+                <li><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" style="color: var(--primary);">jsDelivr Privacy Policy</a></li>
+            </ul>
+            <p>No document content, file content, or personal information is ever sent to these CDNs — only the standard HTTP request needed to fetch a JavaScript file.</p>
+
+            <h3>Apple Services</h3>
+            <p>If you choose to upgrade to Markdown Export Pro, the in-app purchase is processed by Apple's StoreKit. Payment, billing, and subscription management are handled by Apple under <a href="https://www.apple.com/legal/privacy/" style="color: var(--primary);">Apple's Privacy Policy</a>. We never see your payment information.</p>
+            <p>If you tap "Review" in the app, macOS may show Apple's standard rating prompt or open the Mac App Store. Your interaction with that prompt is governed by Apple's privacy policy.</p>
         </section>
 
         <!-- Security -->
@@ -369,10 +387,10 @@
             <h2>Security & Data Protection</h2>
             <p>Your documents are protected by:</p>
             <ul>
-                <li>Local processing - all operations happen on your device</li>
-                <li>No network transmission of document content</li>
-                <li>Your macOS built-in file system security</li>
-                <li>Your control over where files are saved</li>
+                <li>Local processing — all document parsing, PDF generation, image rendering, and Word export happens on your Mac</li>
+                <li>No transmission of document content — your text and exports never leave your device</li>
+                <li>macOS App Sandbox and Hardened Runtime — the app runs with strict system-enforced isolation</li>
+                <li>Your control over where files are saved via the standard macOS save panel</li>
             </ul>
         </section>
 
