@@ -320,7 +320,7 @@
 <section class="hero-section">
   <span class="eyebrow">Legal</span>
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: April 2026</p>
+  <p class="last-updated">Last updated: May 2026</p>
 </section>
 
 <div class="doc-layout">
@@ -367,45 +367,43 @@
         <li>Location data or browsing history</li>
         <li>The contents of any document you create, open, or export</li>
       </ul>
-      <p>Note: while the app itself collects nothing, certain network activity is unavoidable. See "Third-Party Services" below for details.</p>
+      <p>Note: the app does not make outbound network requests in normal use. The only third-party endpoint involved is Apple's StoreKit for optional in-app purchases. See "Third-Party Services" below for details.</p>
     </section>
 
     <section class="policy-section" id="export-processing">
       <h2>Export Processing</h2>
-      <p>When you export your markdown document:</p>
+      <p>When you export your markdown document, every conversion happens locally on your Mac:</p>
       <ul>
-        <li><strong>PDF Exports:</strong> Converted locally on your device using html2pdf.js library</li>
-        <li><strong>Word Documents:</strong> Generated locally with HTML markup, saved to your Mac</li>
-        <li><strong>PNG Images:</strong> Rendered locally using html2canvas library</li>
+        <li><strong>PDF:</strong> Rendered locally with the bundled <code>html2canvas</code> + <code>jsPDF</code> libraries (multi-page paginated on-device).</li>
+        <li><strong>Word (.docx):</strong> Produced locally as real Office Open XML via Apple's built-in <code>NSAttributedString</code> converter — not an HTML-with-.doc rename.</li>
+        <li><strong>HTML:</strong> Generated locally as a fully styled single-file document.</li>
+        <li><strong>ePub 3.0:</strong> Packaged locally as a standards-compliant <code>.epub</code> using the bundled <code>JSZip</code> library.</li>
+        <li><strong>PNG:</strong> Rendered locally as a high-resolution image of the preview.</li>
+        <li><strong>Batch Export (Pro):</strong> Iterates the files you select and writes the PDFs to the folder you choose — none of those files are read or transmitted by us.</li>
       </ul>
       <p>All export files are generated on your device and saved to a location you choose. We have no access to these files.</p>
     </section>
 
     <section class="policy-section" id="third-party">
       <h2>Third-Party Services</h2>
-      <h3>Open-Source Libraries</h3>
-      <p>Markdown Export uses the following open-source JavaScript libraries to render the editor and produce exports. These libraries execute entirely on your Mac — your document content is never uploaded:</p>
+      <h3>Bundled Open-Source Libraries</h3>
+      <p>Markdown Export ships its rendering libraries <strong>inside the app bundle</strong>. They run entirely on your Mac and never make network requests. The app does <em>not</em> use any content-delivery network (CDN) at runtime; nothing is downloaded when you open or use it:</p>
       <ul>
-        <li><strong>html2pdf.js</strong> — PDF generation</li>
-        <li><strong>html2canvas</strong> — Image rendering</li>
-        <li><strong>marked.js</strong> — Markdown parsing</li>
-        <li><strong>highlight.js</strong> — Code syntax highlighting</li>
+        <li><strong>marked</strong> — Markdown parsing</li>
+        <li><strong>html2canvas</strong> — Preview-to-canvas rendering for PDF and PNG export</li>
+        <li><strong>jsPDF</strong> — PDF assembly (bundled together with html2pdf.js)</li>
+        <li><strong>highlight.js</strong> + GitHub style sheet — Code syntax highlighting</li>
+        <li><strong>KaTeX</strong> + auto-render — LaTeX math rendering (<code>$...$</code>, <code>$$...$$</code>)</li>
+        <li><strong>Mermaid</strong> — Diagram rendering for fenced <code>mermaid</code> code blocks</li>
+        <li><strong>JSZip</strong> — ePub packaging</li>
       </ul>
-      <h3>Content Delivery Networks (CDNs)</h3>
-      <p>The libraries above are downloaded by your Mac from public content delivery networks the first time the app is opened (and refreshed periodically). The CDNs we depend on are:</p>
-      <ul>
-        <li><strong>Cloudflare CDN</strong> (<code>cdnjs.cloudflare.com</code>)</li>
-        <li><strong>jsDelivr CDN</strong> (<code>cdn.jsdelivr.net</code>)</li>
-      </ul>
-      <p>When your Mac requests these files, the operators of those networks (Cloudflare, Inc. and the jsDelivr project) automatically receive standard HTTP request metadata, which includes your IP address and the User-Agent string. This is true of any HTTPS request to any web server. We do not control or have access to these logs. Their privacy policies are independent of ours and govern how that metadata is handled:</p>
-      <ul>
-        <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
-        <li><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">jsDelivr Privacy Policy</a></li>
-      </ul>
-      <p>No document content, file content, or personal information is ever sent to these CDNs — only the standard HTTP request needed to fetch a JavaScript file.</p>
+      <p>Because all libraries are bundled, Markdown Export works offline and your IP address, User-Agent, document content, and file names are not exposed to any third-party server during normal use.</p>
       <h3>Apple Services</h3>
-      <p>If you choose to upgrade to Markdown Export Pro, the in-app purchase is processed by Apple's StoreKit. Payment, billing, and subscription management are handled by Apple under <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. We never see your payment information.</p>
+      <p>If you choose to upgrade to Markdown Export Pro (Monthly, Yearly, or Lifetime), the in-app purchase is processed by Apple's StoreKit. Payment, billing, and subscription management are handled by Apple under <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. We never see your payment information. Receipt verification used to restore purchases is handled by StoreKit on-device.</p>
       <p>If you tap "Review" in the app, macOS may show Apple's standard rating prompt or open the Mac App Store. Your interaction with that prompt is governed by Apple's privacy policy.</p>
+      <p>If you invoke the "Export Markdown to PDF" Shortcut, the action is dispatched by Apple's Shortcuts framework. The markdown file you pass in is read by the app from a sandboxed temporary location and is never uploaded anywhere.</p>
+      <h3>Outbound Image URLs in Your Documents</h3>
+      <p>If <em>you</em> embed an image with a remote URL such as <code>![alt](https://example.com/pic.png)</code>, the preview pane (a sandboxed WebKit view inside the app) fetches that image from the URL you specified, the same way any browser would. That request is made directly to the third-party host you chose — Markdown Export does not proxy, log, or share it. You control which URLs appear in your documents.</p>
     </section>
 
     <section class="policy-section" id="security">
